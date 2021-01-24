@@ -19,7 +19,7 @@ To enhance the performance, AVX and openmp are used. In the test sample, the ela
     Computers & Electrical Engineering 37.5 (2011): 757-767.
 ```
 
-## test 
+## Test
 * test image  
 ![](/EntropyThresholding/test.png)
 
