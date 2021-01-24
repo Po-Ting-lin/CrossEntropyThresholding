@@ -20,7 +20,7 @@ To enhance the performance, AVX and openmp are used. In the test sample, elapsed
 ```
 
 ## test 
-* test image
+* test image  
 ![](/EntropyThresholding/test.png)
 
 * result    
