@@ -11,13 +11,6 @@ To enhance the performance, AVX and openmp are used. In the test sample, elapsed
 * OpenMp
 * AVX instruction set
 
-## test 
-* image  
-![](/EntropyThresholding/test.png)
-
-* result    
-![](/EntropyThresholding/result.png)
-
 ## References
 
 ```
@@ -25,3 +18,10 @@ To enhance the performance, AVX and openmp are used. In the test sample, elapsed
     "Two-dimensional minimum local cross-entropy thresholding based on co-occurrence matrix."
     Computers & Electrical Engineering 37.5 (2011): 757-767.
 ```
+
+## test 
+* test image
+![](/EntropyThresholding/test.png)
+
+* result    
+![](/EntropyThresholding/result.png)
