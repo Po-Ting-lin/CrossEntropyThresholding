@@ -11,12 +11,12 @@ To enhance the performance, AVX and openmp are used. In the test sample, elapsed
 * OpenMp
 * AVX instruction set
 
-## Demo  
+## test 
 * image  
-![](/sample/raw.jpg)
+![](/EntropyThresholding/test.png)
 
 * result    
-![](/sample/processed.jpg)
+![](/EntropyThresholding/result.png)
 
 ## References
 
