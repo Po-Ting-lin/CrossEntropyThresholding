@@ -11,9 +11,9 @@ int main(void) {
 
 	auto start = std::chrono::system_clock::now();
 	EntropyBasedThreshold entropy_based_threshold(src);
-	entropy_based_threshold.Process();
+	int t = entropy_based_threshold.Process();
 	auto end = std::chrono::system_clock::now();
-	cv::threshold(src, dst, entropy_based_threshold.Process(), DYNAMICRANGE - 1, 0);
+	cv::threshold(src, dst, t, DYNAMICRANGE - 1, 0);
 
 	std::chrono::duration<double> elapsed_seconds = end - start;
 	std::cout << "total time consume: " << elapsed_seconds.count() << std::endl;
