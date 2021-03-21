@@ -15,6 +15,9 @@ int main(void) {
 	auto end = std::chrono::system_clock::now();
 	cv::threshold(src, dst, t, DYNAMICRANGE - 1, 0);
 
+	cv::imshow("result", dst);
+	cv::waitKey(0);
+
 	std::chrono::duration<double> elapsed_seconds = end - start;
 	std::cout << "total time consume: " << elapsed_seconds.count() << std::endl;
 	return 0;

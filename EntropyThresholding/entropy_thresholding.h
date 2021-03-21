@@ -3,12 +3,10 @@
 #include <omp.h>
 #include <immintrin.h>
 #include <opencv2/opencv.hpp>
+#include "math_log.h"
 
 #define EPSILON 1e-8
 #define DYNAMICRANGE 256
-#if defined(__AVX__) && defined(__AVX2__)
-#define ISAVX true
-#endif
 
 #if ISAVX
 #define SET8F(a) _mm256_set1_ps(a)
@@ -17,7 +15,6 @@
 #define DIV8F(a, b) _mm256_div_ps(a, b)
 #define ADD8F(a, b) _mm256_add_ps(a, b)
 #define SUB8F(a, b) _mm256_sub_ps(a, b)
-#define LOG28F(a) _mm256_log2_ps(a)
 #define GETMASK(a, b) _mm256_cvtps_epi32(_mm256_cmp_ps(a, b, _CMP_LT_OS));
 #define MASKLOAD(a, b) _mm256_maskload_ps(a, b)
 
@@ -64,3 +61,4 @@ private:
 	inline void _loadPixel(__m256& x, __m256& p, int width, int r, int c, int cBoundary);
 #endif
 };
+
