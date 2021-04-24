@@ -2,7 +2,7 @@
 #include <cmath>
 #include <omp.h>
 #include <opencv2/opencv.hpp>
-//#include "math_log.h"
+#include "math_log.h"
 
 #define EPSILON 1e-8
 #define DYNAMICRANGE 256
@@ -17,6 +17,12 @@
 #define SUB8F(a, b) _mm256_sub_ps(a, b)
 #define GETMASK(a, b) _mm256_cvtps_epi32(_mm256_cmp_ps(a, b, _CMP_LT_OS));
 #define MASKLOAD(a, b) _mm256_maskload_ps(a, b)
+
+#if INTEL_SVML
+#define LOG2(a) _mm256_log2_ps(a)
+#else
+#define LOG2(a) log256_ps(a)
+#endif
 
 // Reference: https://stackoverflow.com/questions/13219146/how-to-sum-m256-horizontally
 static float sum8f(__m256 x) {

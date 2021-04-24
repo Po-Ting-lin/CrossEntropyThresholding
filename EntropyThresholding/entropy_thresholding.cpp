@@ -156,8 +156,8 @@ int EntropyBasedThreshold::_entropyThesholding() {
                 _rc = MUL8F(_r, _x);
                 _epsilon = SET8F(EPSILON);
                 _meanA = SET8F(meanA);
-                _f1 = MUL8F(MUL8F(_rc, _p), log256_ps(DIV8F(ADD8F(_rc, _epsilon), ADD8F(_meanA, _epsilon))));
-                _f2 = MUL8F(MUL8F(_meanA, _p), log256_ps(ADD8F(DIV8F(DIV8F(_meanA, ADD8F(_r, _epsilon)), ADD8F(_x, _epsilon)), _epsilon)));
+                _f1 = MUL8F(MUL8F(_rc, _p), LOG2(DIV8F(ADD8F(_rc, _epsilon), ADD8F(_meanA, _epsilon))));
+                _f2 = MUL8F(MUL8F(_meanA, _p), LOG2(ADD8F(DIV8F(DIV8F(_meanA, ADD8F(_r, _epsilon)), ADD8F(_x, _epsilon)), _epsilon)));
                 _eA = ADD8F(_eA, ADD8F(_f1, _f2));
             }
 #else
@@ -178,8 +178,8 @@ int EntropyBasedThreshold::_entropyThesholding() {
                 _rc = MUL8F(_r, _x);
                 _epsilon = SET8F(EPSILON);
                 _meanC = SET8F(meanC);
-                _f1 = MUL8F(MUL8F(_rc, _p), log256_ps(DIV8F(ADD8F(_rc, _epsilon), ADD8F(_meanC, _epsilon))));
-                _f2 = MUL8F(MUL8F(_meanC, _p) , log256_ps(ADD8F(DIV8F(DIV8F(_meanC, ADD8F(_r, _epsilon)), ADD8F(_x, _epsilon)), _epsilon)));
+                _f1 = MUL8F(MUL8F(_rc, _p), LOG2(DIV8F(ADD8F(_rc, _epsilon), ADD8F(_meanC, _epsilon))));
+                _f2 = MUL8F(MUL8F(_meanC, _p) , LOG2(ADD8F(DIV8F(DIV8F(_meanC, ADD8F(_r, _epsilon)), ADD8F(_x, _epsilon)), _epsilon)));
                 _eC = ADD8F(_eC, ADD8F(_f1, _f2));
             }
 #else

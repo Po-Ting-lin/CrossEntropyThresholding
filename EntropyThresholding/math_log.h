@@ -1,11 +1,19 @@
 #pragma once
+#define USE_INTEL_SVML true
 
 #if defined(__AVX__) && defined(__AVX2__)
 #define ISAVX true
+#include<immintrin.h>
 #endif
 
-#if ISAVX
-#include<immintrin.h>
+#ifdef USE_INTEL_SVML
+#define INTEL_SVML true
+#else
+#define INTEL_SVML false
+#endif
+
+#if !INTEL_SVML
+
 // Reference: https://github.com/reyoung/avx_mathfun
 /* yes I know, the top of this file is quite ugly */
 # define ALIGN32_BEG
@@ -15,6 +23,15 @@
 typedef __m256  v8sf; // vector of 8 float (avx)
 typedef __m256i v8si; // vector of 8 int   (avx)
 typedef __m128i v4si; // vector of 8 int   (avx)
+
+#define _PI32AVX_CONST(Name, Val)                                            \
+  static const ALIGN32_BEG int _pi32avx_##Name[4] ALIGN32_END = { Val, Val, Val, Val }
+
+_PI32AVX_CONST(1, 1);
+_PI32AVX_CONST(inv1, ~1);
+_PI32AVX_CONST(2, 2);
+_PI32AVX_CONST(4, 4);
+
 
 /* declare some AVX constants -- why can't I figure a better way to do that? */
 #define _PS256_CONST(Name, Val)                                            \
