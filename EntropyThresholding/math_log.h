@@ -1,11 +1,11 @@
 #pragma once
-#include<immintrin.h>
 
 #if defined(__AVX__) && defined(__AVX2__)
 #define ISAVX true
 #endif
 
 #if ISAVX
+#include<immintrin.h>
 // Reference: https://github.com/reyoung/avx_mathfun
 /* yes I know, the top of this file is quite ugly */
 # define ALIGN32_BEG

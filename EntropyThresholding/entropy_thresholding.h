@@ -1,14 +1,14 @@
 #pragma once
 #include <cmath>
 #include <omp.h>
-#include <immintrin.h>
 #include <opencv2/opencv.hpp>
-#include "math_log.h"
+//#include "math_log.h"
 
 #define EPSILON 1e-8
 #define DYNAMICRANGE 256
 
 #if ISAVX
+#include <immintrin.h>
 #define SET8F(a) _mm256_set1_ps(a)
 #define SET8FE(a, b, c, d, e, f, g, i) _mm256_set_ps(a, b, c, d, e, f, g, i)
 #define MUL8F(a, b) _mm256_mul_ps(a, b)
