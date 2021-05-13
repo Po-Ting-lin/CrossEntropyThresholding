@@ -15,6 +15,7 @@ int main(void) {
 	auto end = std::chrono::system_clock::now();
 	cv::threshold(src, dst, t, DYNAMICRANGE - 1, 0);
 
+	cv::imwrite("result.png", dst);
 	cv::imshow("result", dst);
 	cv::waitKey(0);
 
