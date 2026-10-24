@@ -1,5 +1,9 @@
 #pragma once
+// Intel SVML (_mm256_log2_ps) ships with MSVC and ICC only; elsewhere fall
+// back to the avx_mathfun log below.
+#if defined(_MSC_VER) || defined(__INTEL_COMPILER)
 #define USE_INTEL_SVML true
+#endif
 
 #if defined(__AVX__) && defined(__AVX2__)
 #define ISAVX true

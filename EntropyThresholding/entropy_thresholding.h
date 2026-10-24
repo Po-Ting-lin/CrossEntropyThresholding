@@ -21,7 +21,8 @@
 #if INTEL_SVML
 #define LOG2(a) _mm256_log2_ps(a)
 #else
-#define LOG2(a) log256_ps(a)
+// log256_ps is the natural log; scale by 1/ln(2) to match _mm256_log2_ps.
+#define LOG2(a) _mm256_mul_ps(log256_ps(a), _mm256_set1_ps(1.4426950408889634f))
 #endif
 
 // Reference: https://stackoverflow.com/questions/13219146/how-to-sum-m256-horizontally

@@ -1,8 +1,8 @@
 #include "entropy_thresholding.h"
 
-int main(void) {
+int main(int argc, char** argv) {
 	cv::Mat src, dst;
-	src = cv::imread(R"(test.png)", cv::IMREAD_GRAYSCALE);
+	src = cv::imread(argc > 1 ? argv[1] : "test.png", cv::IMREAD_GRAYSCALE);
 
 	if (!src.data) {
 		std::cout << "Error: the image wasn't correctly loaded." << std::endl;
@@ -16,8 +16,11 @@ int main(void) {
 	cv::threshold(src, dst, t, DYNAMICRANGE - 1, 0);
 
 	cv::imwrite("result.png", dst);
-	cv::imshow("result", dst);
-	cv::waitKey(0);
+	std::cout << "threshold: " << t << std::endl;
+	if (std::getenv("DISPLAY") != nullptr) {
+		cv::imshow("result", dst);
+		cv::waitKey(0);
+	}
 
 	std::chrono::duration<double> elapsed_seconds = end - start;
 	std::cout << "total time consume: " << elapsed_seconds.count() << std::endl;
