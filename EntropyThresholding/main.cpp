@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 
 	cv::imwrite("result.png", dst);
 	std::cout << "threshold: " << t << std::endl;
-	if (std::getenv("DISPLAY") != nullptr) {
+	if (std::getenv("DISPLAY") != nullptr && !cv::currentUIFramework().empty()) {
 		cv::imshow("result", dst);
 		cv::waitKey(0);
 	}
